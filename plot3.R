@@ -7,6 +7,7 @@ names(raw_data) <- c("Date","Time","Global_active_power","Global_reactive_power"
 dateTimes <- paste(raw_data$Date, raw_data$Time)
 
 raw_data$dateTimes <- strptime(dateTimes, "%d/%m/%Y %H:%M:%S")
+png(file="plot3.png", width=480, height=480)
 
 plot(raw_data$dateTimes, raw_data$Sub_metering_1, type="l", xlab = "", ylab = "Energy sub metering")
 lines(raw_data$dateTimes, raw_data$Sub_metering_2, col="red")
@@ -14,5 +15,4 @@ lines(raw_data$dateTimes, raw_data$Sub_metering_3, col="blue")
 legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), lwd=c(1,1,1), col=c("black", "red","blue"))
 
 
-dev.copy(png, 'plot3.png')
 dev.off()
